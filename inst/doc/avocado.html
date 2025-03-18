@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Overview of Datasets</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Overview of Datasets</h1>
+
+
+
+<p>The {avocado} package consists of three different datasets that
+summarize the weekly sales (units) of Hass Avocados at different
+regional levels.</p>
+<ul>
+<li><code>hass_usa</code>: weekly contiguous US avocado sales at the
+country level</li>
+<li><code>hass_region</code>: weekly contiguous US avocado sales at the
+region level</li>
+<li><code>hass_market</code>: weekly contiguous US avocado sales at the
+city/sub-region level</li>
+</ul>
+<div id="units" class="section level3">
+<h3>Units</h3>
+<p>Throughout the datasets, you’ll see the term units. Think of a unit
+as 1 avocado. The <a href="https://hassavocadoboard.com">Hass Avocado
+Board</a> (HAB) provides insights on the unit sales of avocados. This
+includes bags. In terms of bags, 1 unit still refers to 1 avocado. A bag
+(of any size) may consist of multiple units.</p>
+</div>
+<div id="rounding" class="section level3">
+<h3>Rounding</h3>
+<p>The raw dataset that is provided by HAB typically includes fractional
+units. This does not imply that fractions of avocados were sold. Rather,
+the underlying data comes from external sources. These sources can
+provide fractional units depending on how they count units. For example,
+partial sales could result in fractional units. For the datasets in this
+package, all values have been rounded up to the nearest whole
+number.</p>
+<p>See the HAB website for their summarized reports and informational
+dashboards.</p>
+</div>
+<div id="plu" class="section level3">
+<h3>PLU</h3>
+<p>The product/price lookup code (<a href="https://en.wikipedia.org/wiki/Price_look-up_code">PLU</a>)
+uniquely identifies a product (mainly produce). The <a href="https://loveonetoday.com/how-to/identify-hass-avocados/">Hass
+Avocado Board</a> focuses on six different PLUs:</p>
+<ul>
+<li>4046: non-organic small/medium Hass Avocados (~3-5 oz); also known
+as Hass #60 size or smaller</li>
+<li>4225: non-organic large Hass Avocados (~8-10 oz); also known as Hass
+#40 size and Hass #48 size</li>
+<li>4770: non-organic extra large Hass Avocados (~10-15 oz); also known
+as Hass #36 size or larger</li>
+</ul>
+<p>Organic avocados have the digit 9 prefixed to the non-organic PLUs: *
+94046: organic small/medium Hass Avocados (~3-5 oz) * 94225: organic
+large Hass Avocados (~8-10 oz) * 94770: organic extra large Hass
+Avocados (~10-15 oz)</p>
+<p>Within this dataset, you’ll want to use the <code>type</code> column
+combined with the column <code>plu4046_units</code>,
+<code>plu4225_units</code>, and <code>plu4770_units</code> to determine
+if the units are for conventional (non-organic) or organic avocados. For
+example, if the type is Organic and you look at the value in
+<code>plu4046_units</code>, you’ll actually be looking at the unit sales
+for organic avocados with PLU 94046.</p>
+</div>
+<div id="bags-vs-plu" class="section level3">
+<h3>Bags vs PLU</h3>
+<p>Another distinction that the HAB makes is between bags versus bulk.
+Bulk typically means avocados sold as individual pieces and are easily
+distinguishable with their PLU codes. Hence, the PLU refers to a bulk
+sale. On the other hand, the bags indicates a pre-packaged container
+consisting of a variable number of avocados that could weigh
+differently.</p>
+</div>
+<div id="region-vs.-location" class="section level3">
+<h3>Region vs. Location</h3>
+<p>The <code>hass_region</code> and <code>hass</code> datasets contain a
+shared variable called <code>region</code> and the <code>hass</code>
+dataset has a variable called <code>location</code>. Regions are defined
+by the Hass Avocado Board and Locations are selected cities or
+sub-regions that are part of the overall Region. The totals found for
+all locations within a Region will not equal the total found for the
+specific Region due to the aforementioned point. For convenience, here
+is a breakdown of the Regions and Locations:</p>
+<ul>
+<li>California</li>
+<li>West
+<ul>
+<li>Washington</li>
+<li>Oregon</li>
+<li>Idaho</li>
+<li>Nevada</li>
+<li>Montana</li>
+<li>Utah</li>
+<li>Arizona</li>
+<li>Wyoming</li>
+<li>Colorado</li>
+<li>New Mexico</li>
+</ul></li>
+<li>Plains
+<ul>
+<li>North Dakota</li>
+<li>South Dakota</li>
+<li>Nebraska</li>
+<li>Kansas</li>
+<li>Minnesota</li>
+<li>Iowa</li>
+<li>Missouri</li>
+</ul></li>
+<li>South Central
+<ul>
+<li>Texas</li>
+<li>Oklahoma</li>
+<li>Arkansas</li>
+<li>Louisiana</li>
+</ul></li>
+<li>Southeast
+<ul>
+<li>Mississippi</li>
+<li>Alabama</li>
+<li>Georgia</li>
+<li>South Carolina</li>
+<li>Florida</li>
+</ul></li>
+<li>Midsouth
+<ul>
+<li>Kentucky</li>
+<li>Tennessee</li>
+<li>North Carolina</li>
+<li>West Virginia</li>
+<li>Virginia</li>
+<li>Maryland</li>
+<li>Delaware</li>
+</ul></li>
+<li>Great Lakes
+<ul>
+<li>Wisconsin</li>
+<li>Illinois</li>
+<li>Michigan</li>
+<li>Indiana</li>
+<li>Ohio</li>
+</ul></li>
+<li>Northeast
+<ul>
+<li>Pennsylvania</li>
+<li>New York</li>
+<li>Vermont</li>
+<li>New Hampshire</li>
+<li>Massachusetts</li>
+<li>Connecticut</li>
+<li>Rhode Island</li>
+<li>New Jersey</li>
+<li>Maine</li>
+</ul></li>
+</ul>
+</div>
+<div id="datasets" class="section level2">
+<h2>Datasets</h2>
+<div id="hass_usa" class="section level3">
+<h3>hass_usa</h3>
+<p>The <code>hass_usa</code> dataset focuses on weekly Hass Avocado
+sales at the country (i.e., contiguous US) level and consists of the
+following fields:</p>
+<ul>
+<li><code>week_ending</code>: The date of the last day of the week in
+YYYY-MM-DD format.</li>
+<li><code>type</code>: Whether it’s non-organic (Conventional) or
+organic.</li>
+<li><code>avg_selling_price</code>: The Average Selling Price. This is a
+derived value (by HAB) that looks at total dollar sales divided by total
+units sold. It is <strong>not</strong> the advertised selling price
+(e.g., the price you may see in stores).</li>
+<li><code>total_bulk_and_bags_units</code>: The total number of avocados
+sold. This includes avocados sold individually (i.e., bulk) or in
+bags.</li>
+<li><code>plu4046_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4046 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94046 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>plu4225_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4225 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94225 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>plu4770_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4770 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94770 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>total_bagged_units</code>: The total number of avocados sold
+in bags. This is <strong>not</strong> the number of bags sold.</li>
+<li><code>sml_bagged_units</code>: The total number of avocados sold in
+small bags. This value is no longer available from 2021 onwards.</li>
+<li><code>lrg_bagged_units</code>: The total number of avocados sold in
+large bags. This value is no longer available from 2021 onwards.</li>
+<li><code>xlrg_bagged_units</code>: The total number of avocados sold in
+extra large bags. This value is no longer available from 2021
+onwards.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(avocado)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&#39;hass_usa&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(hass_usa)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; Rows: 810</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt; Columns: 11</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt; $ week_ending               &lt;date&gt; 2017-01-02, 2017-01-08, 2017-01-15, 2017-01…</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; $ type                      &lt;chr&gt; &quot;Conventional&quot;, &quot;Conventional&quot;, &quot;Conventiona…</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; $ avg_selling_price         &lt;dbl&gt; 0.89, 0.99, 0.98, 0.94, 0.96, 0.77, 0.87, 0.…</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; $ total_bulk_and_bags_units &lt;dbl&gt; 38879717, 38049803, 38295489, 42140394, 3937…</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; $ plu4046_units             &lt;dbl&gt; 12707895, 11809728, 12936859, 14254151, 1403…</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; $ plu4225_units             &lt;dbl&gt; 14201201, 13856935, 12625666, 14212882, 1168…</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt; $ plu4770_units             &lt;dbl&gt; 549845, 539069, 579347, 908617, 818728, 1664…</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt; $ total_bagged_units        &lt;dbl&gt; 11420777, 11844072, 12153619, 12764745, 1283…</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; $ sml_bagged_units          &lt;dbl&gt; 8551134, 9332972, 9445623, 9462854, 9918256,…</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; $ lrg_bagged_units          &lt;dbl&gt; 2802710, 2432260, 2638919, 3231020, 2799961,…</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="co">#&gt; $ xlrg_bagged_units         &lt;dbl&gt; 66934, 78841, 69078, 70872, 119096, 112870, …</span></span></code></pre></div>
+</div>
+<div id="haas_region" class="section level3">
+<h3>haas_region</h3>
+<p>The <code>hass_region</code> dataset focuses on weekly US Hass
+Avocado sales at the region level and consist of the following
+fields:</p>
+<ul>
+<li><code>region</code>: Specific region within the US as defined by the
+Hass Avocado Board.</li>
+<li><code>week_ending</code>: The date of the last day of the week in
+YYYY-MM-DD format.</li>
+<li><code>type</code>: Whether it’s non-organic (Conventional) or
+organic.</li>
+<li><code>avg_selling_price</code>: The Average Selling Price. This is a
+derived value (by HAB) that looks at total dollar sales divided by total
+units sold. It is <strong>not</strong> the advertised selling price
+(e.g., the price you may see in stores).</li>
+<li><code>total_bulk_and_bags_units</code>: The total number of avocados
+sold. This includes avocados sold individually (i.e., bulk) or in
+bags.</li>
+<li><code>plu4046_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4046 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94046 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>plu4225_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4225 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94225 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>plu4770_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4770 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94770 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>total_bagged_units</code>: The total number of avocados sold
+in bags. This is <strong>not</strong> the number of bags sold.</li>
+<li><code>sml_bagged_units</code>: The total number of avocados sold in
+small bags. This value is no longer available from 2021 onwards.</li>
+<li><code>lrg_bagged_units</code>: The total number of avocados sold in
+large bags. This value is no longer available from 2021 onwards.</li>
+<li><code>xlrg_bagged_units</code>: The total number of avocados sold in
+extra large bags. This value is no longer available from 2021
+onwards.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(avocado)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&#39;hass_region&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(hass_region)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; Rows: 6,480</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#&gt; Columns: 12</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; $ region                    &lt;chr&gt; &quot;California&quot;, &quot;Great Lakes&quot;, &quot;Midsouth&quot;, &quot;No…</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt; $ week_ending               &lt;date&gt; 2017-01-02, 2017-01-02, 2017-01-02, 2017-01…</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt; $ type                      &lt;chr&gt; &quot;Conventional&quot;, &quot;Conventional&quot;, &quot;Conventiona…</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt; $ avg_selling_price         &lt;dbl&gt; 0.89, 0.88, 1.12, 1.35, 0.83, 0.64, 0.94, 0.…</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; $ total_bulk_and_bags_units &lt;dbl&gt; 7175277, 4225246, 2878968, 3513389, 2382743,…</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; $ plu4046_units             &lt;dbl&gt; 2266314, 636278, 653896, 174843, 1462455, 35…</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; $ plu4225_units             &lt;dbl&gt; 2877689, 2157250, 1285365, 2589316, 509660, …</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; $ plu4770_units             &lt;dbl&gt; 90900, 189357, 64704, 39607, 4781, 27549, 92…</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; $ total_bagged_units        &lt;dbl&gt; 1940376, 1242362, 875005, 709624, 405849, 13…</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; $ sml_bagged_units          &lt;dbl&gt; 1762034, 885770, 719380, 659612, 387098, 110…</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt; $ lrg_bagged_units          &lt;dbl&gt; 151334, 349033, 151227, 49533, 13009, 230435…</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt; $ xlrg_bagged_units         &lt;dbl&gt; 27008, 7560, 4399, 479, 5743, 16335, 1884, 3…</span></span></code></pre></div>
+</div>
+<div id="hass_market" class="section level3">
+<h3>hass_market</h3>
+<p>The <code>hass_market</code> dataset summarizes weekly Hass Avocado
+sales within the contiguous US based on city or sub-region. These areas
+are defined by the HAB and make up portions of the <code>region</code>
+field in the <code>haas_region</code> dataset. The fields are:</p>
+<ul>
+<li><code>region</code>: Specific region within the US as defined by the
+Hass Avocado Board.</li>
+<li><code>market</code>: The market within the specified region of the
+United States. This market typically represents a major metropolitan
+city (or cities) reporting the highest sales.</li>
+<li><code>week_ending</code>: The date of the last day of the week in
+YYYY-MM-DD format.</li>
+<li><code>type</code>: Whether it’s non-organic (Conventional) or
+organic.</li>
+<li><code>avg_selling_price</code>: The Average Selling Price. This is a
+derived value (by HAB) that looks at total dollar sales divided by total
+units sold. It is <strong>not</strong> the advertised selling price
+(e.g., the price you may see in stores).</li>
+<li><code>total_bulk_and_bags_units</code>: The total number of avocados
+sold. This includes avocados sold individually (i.e., bulk) or in
+bags.</li>
+<li><code>plu4046_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4046 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94046 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>plu4225_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4225 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94225 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>plu4770_units</code>: The total number of avocados sold. For
+non-organic, consider this to be PLU 4770 and ensure that the value in
+the tpe column is <code>Conventional</code>. For organic, consider this
+to be PLU 94770 and ensure that the value in the type column is
+<code>Organic</code>.</li>
+<li><code>total_bagged_units</code>: The total number of avocados sold
+in bags. This is <strong>not</strong> the number of bags sold.</li>
+<li><code>sml_bagged_units</code>: The total number of avocados sold in
+small bags. This value is no longer available from 2021 onwards.</li>
+<li><code>lrg_bagged_units</code>: The total number of avocados sold in
+large bags. This value is no longer available from 2021 onwards.</li>
+<li><code>xlrg_bagged_units</code>: The total number of avocados sold in
+extra large bags. This value is no longer available from 2021
+onwards.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(avocado)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&#39;hass_market&#39;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(hass_market)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; Rows: 38,522</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; Columns: 13</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; $ region                    &lt;chr&gt; &quot;Northeast&quot;, &quot;Southeast&quot;, &quot;Midsouth&quot;, &quot;West&quot;…</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; $ market                    &lt;chr&gt; &quot;Albany&quot;, &quot;Atlanta&quot;, &quot;Baltimore/Washington&quot;,…</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; $ week_ending               &lt;date&gt; 2017-01-02, 2017-01-02, 2017-01-02, 2017-01…</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; $ type                      &lt;chr&gt; &quot;Conventional&quot;, &quot;Conventional&quot;, &quot;Conventiona…</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; $ avg_selling_price         &lt;dbl&gt; 1.47, 0.93, 1.47, 0.92, 1.29, 1.43, 1.21, 1.…</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; $ total_bulk_and_bags_units &lt;dbl&gt; 129949, 547566, 631761, 104511, 458831, 1053…</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; $ plu4046_units             &lt;dbl&gt; 4846, 224074, 54531, 27846, 4120, 1286, 4776…</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; $ plu4225_units             &lt;dbl&gt; 117028, 118927, 408953, 9409, 371224, 58532,…</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; $ plu4770_units             &lt;dbl&gt; 201, 338, 14388, 11342, 3934, 103, 15037, 11…</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; $ total_bagged_units        &lt;dbl&gt; 7875, 204229, 153892, 55915, 79554, 45430, 5…</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; $ sml_bagged_units          &lt;dbl&gt; 7867, 111600, 151346, 53094, 79340, 45156, 4…</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; $ lrg_bagged_units          &lt;dbl&gt; 8, 92629, 2543, 2794, 214, 256, 13712, 1079,…</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; $ xlrg_bagged_units         &lt;dbl&gt; 0, 0, 4, 28, 0, 19, 47, 5090, 2, 0, 917, 98,…</span></span></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -16,6 +16,6 @@ dplyr::glimpse(hass_region)
 
 ## -----------------------------------------------------------------------------
 library(avocado)
-data('hass')
-dplyr::glimpse(hass)
+data('hass_market')
+dplyr::glimpse(hass_market)
 

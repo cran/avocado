@@ -1,0 +1,185 @@
+---
+title: "Overview of Datasets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview of Datasets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The {avocado} package consists of three different datasets that summarize the weekly sales (units) of Hass Avocados at different regional levels.
+
+- `hass_usa`: weekly contiguous US avocado sales at the country level
+- `hass_region`: weekly contiguous US avocado sales at the region level
+- `hass_market`: weekly contiguous US avocado sales at the city/sub-region level
+
+### Units
+
+Throughout the datasets, you'll see the term units. Think of a unit as 1 avocado. The [Hass Avocado Board](https://hassavocadoboard.com) (HAB) provides insights on the unit sales of avocados. This includes bags. In terms of bags, 1 unit still refers to 1 avocado. A bag (of any size) may consist of multiple units.
+
+### Rounding
+
+The raw dataset that is provided by HAB typically includes fractional units. This does not imply that fractions of avocados were sold. Rather, the underlying data comes from external sources. These sources can provide fractional units depending on how they count units. For example, partial sales could result in fractional units. For the datasets in this package, all values have been rounded up to the nearest whole number. 
+
+See the HAB website for their summarized reports and informational dashboards.
+
+### PLU
+
+The product/price lookup code ([PLU](https://en.wikipedia.org/wiki/Price_look-up_code)) uniquely identifies a product (mainly produce). The [Hass Avocado Board](https://loveonetoday.com/how-to/identify-hass-avocados/) focuses on six different PLUs:
+
+* 4046: non-organic small/medium Hass Avocados (~3-5 oz); also known as Hass #60 size or smaller
+* 4225: non-organic large Hass Avocados (~8-10 oz); also known as Hass #40 size and Hass #48 size
+* 4770: non-organic extra large Hass Avocados (~10-15 oz); also known as Hass #36 size or larger
+
+Organic avocados have the digit 9 prefixed to the non-organic PLUs:
+* 94046: organic small/medium Hass Avocados (~3-5 oz)
+* 94225: organic large Hass Avocados (~8-10 oz)
+* 94770: organic extra large Hass Avocados (~10-15 oz)
+
+Within this dataset, you'll want to use the `type` column combined with the column `plu4046_units`, `plu4225_units`, and `plu4770_units` to determine if the units are for conventional (non-organic) or organic avocados. For example, if the type is Organic and you look at the value in `plu4046_units`, you'll actually be looking at the unit sales for organic avocados with PLU 94046.
+
+
+### Bags vs PLU
+
+Another distinction that the HAB makes is between bags versus bulk. Bulk typically means avocados sold as individual pieces and are easily distinguishable with their PLU codes. Hence, the PLU refers to a bulk sale. On the other hand, the bags indicates a pre-packaged container consisting of a variable number of avocados that could weigh differently.
+
+### Region vs. Location
+
+The `hass_region` and `hass` datasets contain a shared variable called `region` and the `hass` dataset has a variable called `location`. Regions are defined by the Hass Avocado Board and Locations are selected cities or sub-regions that are part of the overall Region. The totals found for all locations within a Region will not equal the total found for the specific Region due to the aforementioned point. For convenience, here is a breakdown of the Regions and Locations:
+
+* California
+* West
+  - Washington
+  - Oregon
+  - Idaho
+  - Nevada
+  - Montana
+  - Utah
+  - Arizona
+  - Wyoming
+  - Colorado
+  - New Mexico
+* Plains
+  - North Dakota
+  - South Dakota
+  - Nebraska
+  - Kansas
+  - Minnesota
+  - Iowa
+  - Missouri
+* South Central
+  - Texas
+  - Oklahoma
+  - Arkansas
+  - Louisiana
+* Southeast
+  - Mississippi
+  - Alabama
+  - Georgia
+  - South Carolina
+  - Florida
+* Midsouth
+  - Kentucky
+  - Tennessee
+  - North Carolina
+  - West Virginia
+  - Virginia
+  - Maryland
+  - Delaware
+* Great Lakes
+  - Wisconsin
+  - Illinois
+  - Michigan
+  - Indiana
+  - Ohio
+* Northeast
+  - Pennsylvania
+  - New York
+  - Vermont
+  - New Hampshire
+  - Massachusetts
+  - Connecticut
+  - Rhode Island
+  - New Jersey
+  - Maine
+
+## Datasets
+
+### hass_usa
+
+The `hass_usa` dataset focuses on weekly Hass Avocado sales at the country (i.e., contiguous US) level and consists of the following fields:
+
+- `week_ending`: The date of the last day of the week in YYYY-MM-DD format.
+- `type`: Whether it's non-organic (Conventional) or organic.
+- `avg_selling_price`: The Average Selling Price. This is a derived value (by HAB) that looks at total dollar sales divided by total units sold. It is **not** the advertised selling price (e.g., the price you may see in stores).
+- `total_bulk_and_bags_units`: The total number of avocados sold. This includes avocados sold individually (i.e., bulk) or in bags.
+- `plu4046_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4046 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94046 and ensure that the value in the type column is `Organic`.
+- `plu4225_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4225 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94225 and ensure that the value in the type column is `Organic`.
+- `plu4770_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4770 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94770 and ensure that the value in the type column is `Organic`.
+- `total_bagged_units`: The total number of avocados sold in bags. This is **not** the number of bags sold.
+- `sml_bagged_units`: The total number of avocados sold in small bags. This value is no longer available from 2021 onwards.
+- `lrg_bagged_units`: The total number of avocados sold in large bags. This value is no longer available from 2021 onwards.
+- `xlrg_bagged_units`: The total number of avocados sold in extra large bags. This value is no longer available from 2021 onwards.
+
+
+```{r}
+library(avocado)
+data('hass_usa')
+dplyr::glimpse(hass_usa)
+```
+
+### haas_region
+
+The `hass_region` dataset focuses on weekly US Hass Avocado sales at the region level and consist of the following fields:
+
+- `region`: Specific region within the US as defined by the Hass Avocado Board.
+- `week_ending`: The date of the last day of the week in YYYY-MM-DD format.
+- `type`: Whether it's non-organic (Conventional) or organic.
+- `avg_selling_price`: The Average Selling Price. This is a derived value (by HAB) that looks at total dollar sales divided by total units sold. It is **not** the advertised selling price (e.g., the price you may see in stores).
+- `total_bulk_and_bags_units`: The total number of avocados sold. This includes avocados sold individually (i.e., bulk) or in bags.
+- `plu4046_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4046 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94046 and ensure that the value in the type column is `Organic`.
+- `plu4225_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4225 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94225 and ensure that the value in the type column is `Organic`.
+- `plu4770_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4770 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94770 and ensure that the value in the type column is `Organic`.
+- `total_bagged_units`: The total number of avocados sold in bags. This is **not** the number of bags sold.
+- `sml_bagged_units`: The total number of avocados sold in small bags. This value is no longer available from 2021 onwards.
+- `lrg_bagged_units`: The total number of avocados sold in large bags. This value is no longer available from 2021 onwards.
+- `xlrg_bagged_units`: The total number of avocados sold in extra large bags. This value is no longer available from 2021 onwards.
+
+```{r}
+library(avocado)
+data('hass_region')
+dplyr::glimpse(hass_region)
+```
+
+
+### hass_market
+
+The `hass_market` dataset summarizes weekly Hass Avocado sales within the contiguous US based on city or sub-region. These areas are defined by the HAB and make up portions of the `region` field in the `haas_region` dataset. The fields are:
+
+- `region`: Specific region within the US as defined by the Hass Avocado Board.
+- `market`: The market within the specified region of the United States. This market typically represents a major metropolitan city (or cities) reporting the highest sales.
+- `week_ending`: The date of the last day of the week in YYYY-MM-DD format.
+- `type`: Whether it's non-organic (Conventional) or organic.
+- `avg_selling_price`: The Average Selling Price. This is a derived value (by HAB) that looks at total dollar sales divided by total units sold. It is **not** the advertised selling price (e.g., the price you may see in stores).
+- `total_bulk_and_bags_units`: The total number of avocados sold. This includes avocados sold individually (i.e., bulk) or in bags.
+- `plu4046_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4046 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94046 and ensure that the value in the type column is `Organic`.
+- `plu4225_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4225 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94225 and ensure that the value in the type column is `Organic`.
+- `plu4770_units`: The total number of avocados sold. For non-organic, consider this to be PLU 4770 and ensure that the value in the tpe column is `Conventional`. For organic, consider this to be PLU 94770 and ensure that the value in the type column is `Organic`.
+- `total_bagged_units`: The total number of avocados sold in bags. This is **not** the number of bags sold.
+- `sml_bagged_units`: The total number of avocados sold in small bags. This value is no longer available from 2021 onwards.
+- `lrg_bagged_units`: The total number of avocados sold in large bags. This value is no longer available from 2021 onwards.
+- `xlrg_bagged_units`: The total number of avocados sold in extra large bags. This value is no longer available from 2021 onwards.
+
+```{r}
+library(avocado)
+data('hass_market')
+dplyr::glimpse(hass_market)
+```
+

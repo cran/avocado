@@ -1,26 +1,22 @@
-#' Hass Avocado US Sales
+#' Hass Avocado Weekly US Sales
 #'
 #' @description Weekly summary of Hass avocado sales for the United States
 #'
 #' @details This dataset contains a weekly sales summary for Hass avocados for the US.
 #'
-#' @format a dataframe with 15 variables.
+#' @format a dataframe with 11 variables.
 #' \describe{
 #'   \item{week_ending}{The date of the last day of the week in YYYY-MM-DD format.}
-#'   \item{avg_price_nonorg}{The average selling price in US$ for non-organic Hass avocados. Not adjusted for inflation.}
-#'   \item{plu4046}{The amount of PLU 4046 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu4225}{The amount of PLU 4225 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu4770}{The amount of PLU 4770 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{small_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in small pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{large_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{xlarge_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in extra-large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{avg_price_org}{The average selling price in US$ for organic Hass avocados. Not adjusted for inflation.}
-#'   \item{plu94046}{The amount of PLU 94046 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu94225}{The amount of PLU 94225 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu94770}{The amount of PLU 94770 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{small_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in small pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{large_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{xlarge_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in extra-large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
+#'   \item{type}{Whether the avocado type is conventional (meaning non-organic) or organic.}
+#'   \item{avg_selling_price}{The average selling price (which is NOT the advertised selling price) in US$ for Hass avocados. Not adjusted for inflation.}
+#'   \item{total_bulk_and_bags_units}{The number of avocados sold in bulk (i.e., individually) or in bags. A unit is 1 avocado - not 1 bag.}
+#'   \item{plu4046_units}{The amount or number of PLU4046 (non-organic) or PLU94046 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{plu4225_units}{The amount or number of PLU4225 (non-organic) or PLU94225 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{plu4770_units}{The amount or number of PLU4770 (non-organic) or PLU94770 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{total_bagged_units}{The amount of avocados sold in bags. One unit refers to one avocado, not 1 bag. From 2021 onwards, this value is not broken down by size of bag.}
+#'   \item{sml_bagged_units}{The amount of avocados sold in small bags. One unit refers to one avocado. This bag typically consists of Hass #60 sizes & smaller.}
+#'   \item{lrg_bagged_units}{The amount of avocados sold in large bags. One unit refers to one avocado. This bag typically consists of Hass #40 & Hass #48 sizes.}
+#'   \item{xlrg_bagged_units}{TThe amount of avocados sold in extra large bags. One unit refers to one avocado. This bag typically consists of Hass #36 sizes or larger.}
 #' }
 #'
 #' @source Hass Avocado Board \href{https://hassavocadoboard.com}{Category Data}
@@ -34,55 +30,47 @@
 #'
 #' @details This dataset contains a weekly sales summary for Hass avocados for regions (as defined by the Hass Avocado Board) within the US.
 #'
-#' @format a dataframe with 16 variables.
+#' @format a dataframe with 12 variables.
 #'
 #' \describe{
+#'   \item{region}{The region of the United States. Defined by the Hass Avocado Board for their reporting. Each region may consist of multiple markets found in different states. See the Hass Avocado Board website for more details.}
 #'   \item{week_ending}{The date of the last day of the week in YYYY-MM-DD format.}
-#'   \item{region}{Specific region within the US as defined by the Hass Avocado Board.}
-#'   \item{avg_price_nonorg}{The average selling price in US$ for non-organic Hass avocados. Not adjusted for inflation.}
-#'   \item{plu4046}{The amount of PLU 4046 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu4225}{The amount of PLU 4225 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu4770}{The amount of PLU 4770 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{small_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in small pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{large_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{xlarge_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in extra-large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{avg_price_org}{The average selling price in US$ for organic Hass avocados. Not adjusted for inflation.}
-#'   \item{plu94046}{The amount of PLU 94046 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu94225}{The amount of PLU 94225 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu94770}{The amount of PLU 94770 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{small_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in small pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{large_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{xlarge_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in extra-large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
+#'   \item{type}{Whether the avocado type is conventional (meaning non-organic) or organic.}
+#'   \item{avg_selling_price}{The average selling price (which is NOT the advertised selling price) in US$ for Hass avocados. Not adjusted for inflation.}
+#'   \item{total_bulk_and_bags_units}{The number of avocados sold in bulk (i.e., individually) or in bags. A unit is 1 avocado - not 1 bag.}
+#'   \item{plu4046_units}{The amount or number of PLU4046 (non-organic) or PLU94046 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{plu4225_units}{The amount or number of PLU4225 (non-organic) or PLU94225 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{plu4770_units}{The amount or number of PLU4770 (non-organic) or PLU94770 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{total_bagged_units}{The amount of avocados sold in bags. One unit refers to one avocado, not 1 bag. From 2021 onwards, this value is not broken down by size of bag.}
+#'   \item{sml_bagged_units}{The amount of avocados sold in small bags. One unit refers to one avocado. This bag typically consists of Hass #60 sizes & smaller.}
+#'   \item{lrg_bagged_units}{The amount of avocados sold in large bags. One unit refers to one avocado. This bag typically consists of Hass #40 & Hass #48 sizes.}
+#'   \item{xlrg_bagged_units}{TThe amount of avocados sold in extra large bags. One unit refers to one avocado. This bag typically consists of Hass #36 sizes or larger.}
 #' }
 #'
 "hass_region"
 
-#' Hass Avocado Sales
+#' Hass Avocado Market Sales
 #'
-#' @description Weekly summary of Hass avocado sales for specific locations found within regions of the United States
+#' @description Weekly summary of Hass avocado sales for specific markets found within regions of the United States
 #'
 #' @details This dataset contains a weekly sales summary for Hass avocados for locations within regions (as defined by the Hass Avocado Board) the US.
 #'
-#' @format a dataframe with 17 variables
+#' @format a dataframe with 13 variables
 #'
 #' \describe{
+#'   \item{region}{The region of the United States. Defined by the Hass Avocado Board for their reporting. Each region may consist of multiple markets found in different states. See the Hass Avocado Board website for more details.}
+#'   \item{market}{The market within the specified region of the United States. This market typically represents a major metropolitan city (or cities) reporting the highest sales.}
 #'   \item{week_ending}{The date of the last day of the week in YYYY-MM-DD format.}
-#'   \item{location}{Specific location within a region of the US. These locations enable a further deep-dive into avocado sales within a region.}
-#'   \item{region}{Specific region within the US as defined by the Hass Avocado Board.}
-#'   \item{avg_price_nonorg}{The average selling price in US$ for non-organic Hass avocados. Not adjusted for inflation.}
-#'   \item{plu4046}{The amount of PLU 4046 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu4225}{The amount of PLU 4225 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu4770}{The amount of PLU 4770 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{small_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in small pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{large_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{xlarge_nonorg_bag}{The amount of non-organic Hass avocados (they can be a mix of PLUs) sold in extra-large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{avg_price_org}{The average selling price in US$ for organic Hass avocados. Not adjusted for inflation.}
-#'   \item{plu94046}{The amount of PLU 94046 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu94225}{The amount of PLU 94225 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{plu94770}{The amount of PLU 94770 Hass avocados sold by weight in US pounds. This does not include avocados sold in pre-packaged quantities. See vignette for more information about Hass PLUs.}
-#'   \item{small_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in small pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{large_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
-#'   \item{xlarge_org_bag}{The amount of organic Hass avocados (they can be a mix of PLUs) sold in extra-large pre-packaged containers/bags in US pounds. This does not include avocados sold individually. See vignette for more information about pre-packaged avocados.}
+#'   \item{type}{Whether the avocado type is conventional (meaning non-organic) or organic.}
+#'   \item{avg_selling_price}{The average selling price (which is NOT the advertised selling price) in US$ for Hass avocados. Not adjusted for inflation.}
+#'   \item{total_bulk_and_bags_units}{The number of avocados sold in bulk (i.e., individually) or in bags. A unit is 1 avocado - not 1 bag.}
+#'   \item{plu4046_units}{The amount or number of PLU4046 (non-organic) or PLU94046 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{plu4225_units}{The amount or number of PLU4225 (non-organic) or PLU94225 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{plu4770_units}{The amount or number of PLU4770 (non-organic) or PLU94770 (organic) Hass avocados sold. Use the type column to determine if the units is for non-organic or organic avocados.}
+#'   \item{total_bagged_units}{The amount of avocados sold in bags. One unit refers to one avocado, not 1 bag. From 2021 onwards, this value is not broken down by size of bag.}
+#'   \item{sml_bagged_units}{The amount of avocados sold in small bags. One unit refers to one avocado. This bag typically consists of Hass #60 sizes & smaller.}
+#'   \item{lrg_bagged_units}{The amount of avocados sold in large bags. One unit refers to one avocado. This bag typically consists of Hass #40 & Hass #48 sizes.}
+#'   \item{xlrg_bagged_units}{TThe amount of avocados sold in extra large bags. One unit refers to one avocado. This bag typically consists of Hass #36 sizes or larger.}
 #' }
 #'
-"hass"
+"hass_market"
